@@ -1,0 +1,5 @@
+{
+    "require": {
+        "minifast/minifast": "^1.4"
+    }
+}

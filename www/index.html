@@ -7,13 +7,16 @@
     </head>
     <body>
         <div id="app">
-            {{ message }}
+            <span v-bind:title="message">
+                Hover your mouse over me for a few seconds
+                to see my dynamically bound title!
+            </span>
         </div>
         <script type="application/javascript">
             var app = new Vue({
                 el: '#app',
                 data: {
-                    message: 'Hello World!'
+                    message: 'You loaded this page on ' + new Date().toLocaleString()
                 }
             });
         </script>
