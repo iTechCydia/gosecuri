@@ -1,0 +1,18 @@
+{% extends 'base.twig' %}
+
+{% block base_navbar %}
+    {% include 'navbar.twig' %}
+{% endblock %}
+
+{% block base_container %}
+    <div class="container-fluid">
+        {% include 'alert.twig' %}
+        {% block container %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block base_footer %}
+    <div class="container-fluid">
+        {% include 'footer.twig' %}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+<a class="navbar-brand" href="/">
+    <i class="fal fa-comment-smile"></i>
+    GoSecuri
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+        
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        {% if not session.user is defined %}
+            <li class="nav-item">
+                <a class="nav-link" href="#modal-login" data-toggle="modal">
+                    <i class="fal fa-sign-in"></i>
+                    Connexion
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#modal-register" data-toggle="modal">
+                    <i class="fal fa-pen-alt"></i>
+                    Inscription
+                </a>
+            </li>
+        {% else %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fal fa-user"></i>
+                    {{ session.user.nom }} {{ session.user.prenom }}
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/user/{{ session.user.pseudo }}">
+                        <i class="fal fa-id-card fa-fw"></i>
+                        Profil
+                    </a>
+                    <a class="dropdown-item" href="/req/user/logout">
+                        <i class="fal fa-sign-out fa-fw"></i>
+                        Déconnexion
+                    </a>
+                </div>
+            </li>
+        {% endif %}
+    </ul>
+</div>

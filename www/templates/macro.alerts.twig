@@ -1,0 +1,24 @@
+{% macro alert(value, text, icon) %}
+{% if icon is empty %}
+    {% if value == 'success' %}
+        {% set icon = 'check' %}
+    {% elseif value == 'danger' %}
+        {% set icon = 'times' %}
+    {% elseif value == 'warning' %}
+        {% set icon = 'exclamation-triangle' %}
+    {% endif %}
+{% endif %}
+<div class="alert alert-{{ value|default('success') }} alert-dismissible fade show mb-3">
+    <div class="form-row">
+        <div class="col-auto">
+            <i class="far fa-{{ icon|default('check') }}"></i>
+        </div>
+        <div class="col">
+            {{ text|e }}
+        </div>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endmacro %}

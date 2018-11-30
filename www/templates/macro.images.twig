@@ -1,0 +1,3 @@
+{% macro img(src, class, attributes) %}
+    <img src="{{ src ? 'data:image/jpg;base64,' }}{{ src|default('/content/img/user-astronaut.jpg') }}" class="{{ class|default('img-fluid rounded') }}" {% for key, attr in attributes %} {{key}}={{attr}}{% endfor %}>
+{% endmacro %}

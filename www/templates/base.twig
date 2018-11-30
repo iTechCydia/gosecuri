@@ -1,0 +1,105 @@
+{% import 'macro.forms.twig' as form %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>{% block base_title %}{% endblock %}Messenger</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="/content/css/main.css">
+
+        <script src="/vendor/fontawesome/fa/fontawesome.min.js" defer></script>
+        <script src="/vendor/fontawesome/fa/solid.min.js" defer></script>
+        <script src="/vendor/fontawesome/fa/regular.min.js" defer></script>
+        <script src="/vendor/fontawesome/fa/light.min.js" defer></script>
+        <script src="/vendor/fontawesome/fa/brands.min.js" defer></script>
+    </head>
+    <body class="pb-5 bg-light">
+        <nav class="navbar fixed-top navbar-light navbar-expand-md border-bottom bg-white shadow-sm" id="main-navbar">
+            {% block base_navbar %}{% endblock %}
+        </nav>
+        {% if not session.user is defined %}
+            <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="form-row justify-content-between mb-2">
+                                <h5 class="modal-title h3">Connexion</h5>
+                                <div class="pr-1"><button class="close" data-dismiss="modal">&times;</button></div>
+                            </div>
+                            <form action="/req/user/login" method="post">
+                                {{ form.email('email', null, { prepend:{icon:'envelope'}, placeholder:'Adresse email' }, 'Adresse email') }}
+                                {{ form.password('password', null, { prepend:{icon:'lock-alt'}, placeholder:'Mot de passe' }, 'Mot de passe') }}
+                                {{ form.checkbox('remember', true, 'Se souvenir de moi') }}
+                                <div class="text-right mt-3">
+                                    <button class="btn btn-secondary btn-pill" data-dismiss="modal">
+                                        <i class="fal fa-times"></i>
+                                        Annuler
+                                    </button>
+                                    <button class="btn btn-primary btn-pill" type="submit">
+                                        <i class="fal fa-sign-in"></i>
+                                        Se connecter
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="form-row justify-content-between mb-2">
+                                <h5 class="modal-title h3">Inscription</h5>
+                                <div class="pr-1"><button class="close" data-dismiss="modal">&times;</button></div>
+                            </div>
+                            <form action="/req/user/register" method="post">
+                                {{ form.text('pseudo', null, { prepend:{icon:'user'}, placeholder:'Pseudo', required: true }, 'Pseudo') }}
+                                <div class="form-row">
+                                    <div class="col-sm-6">
+                                        {{ form.text('nom', null, { prepend:{icon:'user'}, placeholder:'Nom', required: true }, 'Nom') }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{ form.text('prenom', null, { prepend:{icon:'user'}, placeholder:'Prénom', required: true }, 'Prénom') }}
+                                    </div>
+                                </div>
+                                {{ form.email('email', null, { prepend:{icon:'envelope'}, placeholder:'Email', required: true }, 'Email') }}
+                                <label>Mot de passe :</label>
+                                <div class="form-row">
+                                    <div class="col-sm-6">
+                                        {{ form.password('password1', null, { prepend:{icon:'lock-alt'}, placeholder:'Mot de passe', required: true }) }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{ form.password('password2', null, { prepend:{icon:'lock-alt'}, placeholder:'Mot de passe', required: true }) }}
+                                    </div>
+                                </div>
+                                <div class="text-right mt-3">
+                                    <button class="btn btn-secondary btn-pill" data-dismiss="modal">
+                                        <i class="fal fa-times"></i>
+                                        Annuler
+                                    </button>
+                                    <button class="btn btn-primary btn-pill" type="submit">
+                                        <i class="fal fa-pen-alt"></i>
+                                        S'inscrire
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% block base_container %}{% endblock %}
+        <div class="footer">
+            {% block base_footer %}{% endblock %}
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="/content/js/alert.js"></script>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

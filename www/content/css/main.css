@@ -1,0 +1,15 @@
+body {
+    padding-top: 4.5rem;
+}
+
+.btn-pill {
+    border-radius: 1.15rem;
+}
+
+.btn-sm.btn-pill {
+    border-radius: 1rem;
+}
+
+.btn-lg.btn-pill {
+    border-radius: 1.45rem;
+}

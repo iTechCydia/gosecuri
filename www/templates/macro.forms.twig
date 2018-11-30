@@ -1,0 +1,185 @@
+{% macro input(name, value, type, attributes, label) %}
+    <div class="form-group">
+        {% if label is defined and label != null %}
+            <label>{{ label }} :</label>
+        {% endif %}
+        {% if attributes.prepend is defined or attributes.append is defined %}
+            <div class="input-group">
+                {% if attributes.prepend is defined %}
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            {% if attributes.prepend.icon is defined %}<i class="fal fa-{{ attributes.prepend.icon }} fa-fw"></i>{% endif %}
+                            {% if attributes.prepend.text is defined %}{{ attributes.prepend.text }}{% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+        {% endif %}
+                <input name="{{ name }}"
+                       type="{{ type }}"
+                       value="{{ value }}"
+                       class="form-control"
+                       {% for attr, value in attributes %}
+                           {% if attr != 'prepend' or attr != 'append' %}
+                                {{ attr }}="{{ value }}"
+                           {% endif %}
+                       {% endfor %}
+                       {% if not attributes.id is defined %} id="{{ name }}"{% endif %}/>
+        {% if attributes.prepend is defined or attributes.append is defined %}
+            {% if attributes.append is defined %}
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        {% if attributes.append.icon is defined %}<i class="fal fa-{{ attributes.append.icon}} fa-fw"></i>{% endif %}
+                        {% if attributes.append.text is defined %}{{ attributes.append.text }}{% endif %}
+                    </span>
+                </div>
+            {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro text(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "text", attributes, label) }}
+{% endmacro %}
+
+{% macro password(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "password", attributes, label) }}
+{% endmacro %}
+
+{% macro email(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "email", attributes, label) }}
+{% endmacro %}
+
+{% macro color(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "color", attributes, label) }}
+{% endmacro %}
+
+{% macro button(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "button", attributes, label) }}
+{% endmacro %}
+
+{% macro date(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "date", attributes, label) }}
+{% endmacro %}
+
+{% macro file(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "file", attributes, label) }}
+{% endmacro %}
+
+{% macro hidden(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "hidden", attributes, label) }}
+{% endmacro %}
+
+{% macro month(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "month", attributes, label) }}
+{% endmacro %}
+
+{% macro number(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "number", attributes, label) }}
+{% endmacro %}
+
+{% macro range(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "range", attributes, label) }}
+{% endmacro %}
+
+{% macro search(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "search", attributes, label) }}
+{% endmacro %}
+
+{% macro tel(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "tel", attributes, label) }}
+{% endmacro %}
+
+{% macro time(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "time", attributes, label) }}
+{% endmacro %}
+
+{% macro url(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "url", attributes, label) }}
+{% endmacro %}
+
+{% macro week(name, value, attributes, label) %}
+    {% from _self import input %}
+    {{ input(name, value, "week", attributes, label) }}
+{% endmacro %}
+
+{% macro textarea(name, value, attributes) %}
+    <div class="form-group">
+        {% if label is defined %}
+            <label>{{ label }} :</label>
+        {% endif %}
+        {% if attributes.prepend is defined or attributes.append is defined %}
+            <div class="input-group">
+                {% if attributes.prepend is defined %}
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            {% if attributes.prepend.icon is defined %}<i class="fal fa-{{ attributes.prepend.icon }} fa-fw"></i>{% endif %}
+                            {% if attributes.prepend.text is defined %}{{ attributes.prepend.text }}{% endif %}
+                        </span>
+                </div>
+                {% endif %}
+                {% endif %}
+                <textarea name="{{ name }}"
+                          {% for attr, value in attributes %}
+                              {% if attr != 'prepend' or attr != 'append' %} {{ attr }}="{{ value }}{% endif %}"
+                          {% endfor %}{% if not attributes.id is defined %} id="{{ name }}"{% endif %}>
+                    {{ value|e }}
+                </textarea>
+                {% if attributes.prepend is defined or attributes.append is defined %}
+                    {% if attributes.append is defined %}
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                {% if attributes.append.icon is defined %}<i class="fal fa-{{ attributes.append.icon}} fa-fw"></i>{% endif %}
+                                {% if attributes.append.text is defined %}{{ attributes.append.text }}{% endif %}
+                            </span>
+                </div>
+                    {% endif %}
+                    </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro label(id, content, attributes) %}
+    <label for="{{ id }}"{% for attr, value in attributes %} {{ attr }}="{{ value }}"{% endfor %}>{{ content|e }}</label>
+{% endmacro %}
+
+{% macro checkbox(name, value, label, id, attributes) %}
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" name="{{ name }}" id="{{ id|default(name) }}" class="custom-control-input" value="{{ value }}"{% for attr, value in attributes %} {{ attr }}="{{ value }}"{% endfor %} />
+        <label class="custom-control-label" for="{{ id|default(name) }}">{{ label }}</label>
+    </div>
+{% endmacro %}
+
+{% macro select(name, values, value, attributes) %}
+    <select name="{{ name }}"{% for attr, value in attributes %} {{ attr }}="{{ value }}"{% endfor %}{% if not attributes.id is defined %} id="{{ name }}"{% endif %}>
+        {% for key, name in values %}
+            <option value="{{ key }}"{% if value == key %} selected="selected"{% endif %}>{{ name }}</option>
+        {% endfor %}
+</select>
+{% endmacro %}
+
+{% macro radio(name, values, value, attributes) %}
+    {% for key, label in values %}
+        <div class="custom-control custom-radio{% if attributes.inline %} custom-control-inline{% endif %}">
+            <input type="radio" class="custom-control-input" name="{{ name }}" value="{{ key }}"{% if value == key %} {% endif %}{% for attr, value in attributes %} {{ attr }}="{{ value }}"{% endfor %}{% if not attributes.id is defined %} id="{{ name~'-'~key}}"{% endif %}>
+            <label class="custom-control-label"{% if value == key %} selected{% endif %} for="{% if attributes.id is defined %}{{ attributes.id }}{% else %}{{ name~'-'~key}}{% endif %}">
+                {{ label }}
+            </label>
+        </div>
+    {% endfor %}
+{% endmacro %}
