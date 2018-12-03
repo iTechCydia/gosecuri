@@ -1,2 +1,8 @@
 
+!www/vendor/
+
 www/vendor/*
+!www/vendor/minifast/
+
+www/vendor/minifast/*
+!www/vendor/minifast/minifast-orm/
