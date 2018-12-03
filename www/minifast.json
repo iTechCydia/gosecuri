@@ -1,0 +1,10 @@
+{
+	"MiniFastORM": {
+		"database": {
+			"host": "localhost",
+			"dbname": "gosecuri",
+			"user": "root",
+			"password": "root"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<database name="gosecuri">
+
+<table name="user">
+	<column name="id" type="int" primaryKey="true" autoIncrement="true"/>
+	<column name="lastname" type="varchar" size="50"/>
+	<column name="firstname" type="varchar" size="50"/>
+	<column name="email" type="varchar" size="139"/>
+	<column name="image" type="text"/>
+</table>
+
+</database>
+
+
