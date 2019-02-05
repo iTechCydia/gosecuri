@@ -6,3 +6,4 @@ www/vendor/*
 
 www/vendor/minifast/*
 !www/vendor/minifast/minifast-orm/
+www/content/css/.DS_Store
