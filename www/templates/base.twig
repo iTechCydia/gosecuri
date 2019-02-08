@@ -24,7 +24,9 @@
                             </div>
                             <form action="/req/user/login" method="post">
                                 <div class="text-center text-primary display-1">
-                                    <i class="fa fa-user-circle"></i>
+                                    <div class="d-flex justify-content-center">
+                                        <video class="rounded bg-light shadow mw-100" autoplay="true" id="videoElement"></video>
+                                    </div>
                                 </div>
                                 {{ form.email('email', null, { prepend:{icon:'envelope'}, placeholder:'Adresse email' }, 'Adresse email') }}
                                 {{ form.password('password', null, { prepend:{icon:'lock-alt'}, placeholder:'Mot de passe' }, 'Mot de passe') }}
