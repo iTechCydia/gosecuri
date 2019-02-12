@@ -1,6 +1,5 @@
 {
     "require": {
-        "minifast/minifast": "^1.4",
-        "minifast/minifast-orm": "^1.1"
+        "minifast/minifast": "^1.4"
     }
 }
