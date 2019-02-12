@@ -23,10 +23,12 @@
                                 <div class="pr-1"><button class="close" data-dismiss="modal">&times;</button></div>
                             </div>
                             <form action="/req/user/login" method="post">
-                                <div class="text-center text-primary display-1">
+                                <div class="text-center text-primary">
                                     <div class="d-flex justify-content-center">
-                                        <video class="rounded bg-light shadow mw-100" autoplay="true" id="videoElement"></video>
+                                        <canvas id="canvas" width="640" height="480" class="mb-2"></canvas>
+                                        <video class="rounded bg-light shadow mw-100 mb-2" autoplay="true" id="videoElement"></video>
                                     </div>
+                                    <button id="snap" class="btn btn-primary btn-sm">Vérifier visage</button>
                                 </div>
                                 {{ form.email('email', null, { prepend:{icon:'envelope'}, placeholder:'Adresse email' }, 'Adresse email') }}
                                 {{ form.password('password', null, { prepend:{icon:'lock-alt'}, placeholder:'Mot de passe' }, 'Mot de passe') }}
