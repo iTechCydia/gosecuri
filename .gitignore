@@ -2,4 +2,4 @@
 !www/vendor/
 
 www/vendor/*
-www/content/css/.DS_Store
+.DS_Store
