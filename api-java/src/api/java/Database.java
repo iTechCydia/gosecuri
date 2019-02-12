@@ -18,15 +18,15 @@ public class Database {
     private Connection conn;
     private Statement stmt;
     private String sql;
-    
+
     Database() {
         this.connect();
         this.createTables();
     }
-    
+
     public void connect() {
         this.conn = null;
-        
+
         try {
             // Database parameters
             String url = "jdbc:sqlite:db.sqlite";
@@ -37,7 +37,7 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
-    
+
     private void createTables() {
         this.sql = "CREATE TABLE IF NOT EXISTS users ("
                 + "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
@@ -47,11 +47,11 @@ public class Database {
         this.prepare(sql);
         this.execute();
     }
-    
+
     public void prepare(String query) {
         this.sql = query;
     }
-    
+
     public String execute() {
         try {
             this.stmt.execute(this.sql);
