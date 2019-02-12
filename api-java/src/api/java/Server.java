@@ -24,12 +24,12 @@ public class Server {
     Server() throws Exception  {
         this.handler = new Handler();
         this.server = HttpServer.create(new InetSocketAddress(8000), 0);
-        this.routeur = new Routeur();
+        this.routeur = new Routeur(this.server);
     }
     
-    public void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-        server.createContext("/test", handler);
+        server.createContext("/test", new Handler());
         server.setExecutor(null); // creates a default executor
         server.start();
     }

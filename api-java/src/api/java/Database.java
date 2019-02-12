@@ -39,11 +39,26 @@ public class Database {
     }
 
     private void createTables() {
-        this.sql = "CREATE TABLE IF NOT EXISTS users ("
+        String sql = "CREATE TABLE IF NOT EXISTS users ("
                 + "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
                 + "email TEXT NOT NULL,"
                 + "password TEXT NOT NULL,"
                 + "image TEXT);";
+        this.prepare(sql);
+        this.execute();
+        
+        sql = "CREATE TABLE IF NOT EXISTS equipment ("
+                + "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                + "name TEXT NOT NULL"
+                + "available BOOLEAN NOT NULL);";
+        this.prepare(sql);
+        this.execute();
+        
+        sql = "CREATE TABLE IF NOT EXISTS loaning ("
+                + "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                + "user INTEGER NOT NULL"
+                + "equipment INTEGER NOT NULL"
+                + "date DATETIME NOT NULL";
         this.prepare(sql);
         this.execute();
     }

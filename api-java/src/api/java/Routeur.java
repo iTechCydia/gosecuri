@@ -14,6 +14,6 @@ public class Routeur {
     }
 
     public void addRoute(String name) {
-
+        this.server.createContext(name);
     }
 }
