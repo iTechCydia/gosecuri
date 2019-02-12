@@ -11,3 +11,6 @@ www/vendor/*
 .Trashes
 ehthumbs.db
 Thumbs.db
+/api-java/nbproject/private/
+/api-java/build/
+api-java/db.sqlite
