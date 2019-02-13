@@ -15,7 +15,11 @@ public class ApiJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+<<<<<<< HEAD
         // TODO code application logic here
+=======
+        Database db = new Database();
+>>>>>>> parent of 061b621... Le serveur fonctionne ainsi
     }
     
 }
