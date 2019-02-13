@@ -1,5 +1,18 @@
 
 !www/vendor/
 
+<<<<<<< HEAD
 www/vendor/*
 www/content/css/.DS_Store
+=======
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+api-java/db.sqlite
+>>>>>>> 061b621e5d484b261beebf7b0f0c7e26534d259b
