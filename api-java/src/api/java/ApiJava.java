@@ -16,7 +16,11 @@ public class ApiJava {
      */
     public static void main(String[] args) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // TODO code application logic here
+=======
+        Database db = new Database();
+>>>>>>> parent of 061b621... Le serveur fonctionne ainsi
 =======
         Database db = new Database();
 >>>>>>> parent of 061b621... Le serveur fonctionne ainsi
